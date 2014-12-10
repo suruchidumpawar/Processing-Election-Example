@@ -3,7 +3,7 @@
  */
 
 // window size (it's a square)
-final int WINDOW_SIZE = 400;
+final int WINDOW_SIZE = 500;
 // how many milliseconds to show each state for
 final int MILLIS_PER_STATE= 1000;
  
@@ -51,11 +51,21 @@ void draw() {
     // draw the obama vote count and title
     fill(50,50,250);  // blue
     text("Obama",WINDOW_SIZE/4,WINDOW_SIZE/2);
-    text(Math.round(state.pctForObama)+"%",WINDOW_SIZE/4,3*WINDOW_SIZE/4);
+    // draw the obama vote count as a bar
+    rect(WINDOW_SIZE/4 + 160,WINDOW_SIZE/2 - 20,Math.round(state.pctForObama)*2,20);
+    //fill(0,0,0);  // black
+    textFont(font,24);
+    text(Math.round(state.pctForObama)+"%",WINDOW_SIZE/4 + 120,WINDOW_SIZE/2);
+
     // draw the romney vote count and title
+    textFont(font,36);
     fill(201,50,50);  // red
-    text("Romney",3*WINDOW_SIZE/4,WINDOW_SIZE/2);
-    text(Math.round(state.pctForRomney)+"%",3*WINDOW_SIZE/4,3*WINDOW_SIZE/4);
+    text("Romney",WINDOW_SIZE/4,3*WINDOW_SIZE/4);
+    // draw the romney vote count as a bar
+    rect(WINDOW_SIZE/4 + 160,3*WINDOW_SIZE/4 - 20,Math.round(state.pctForRomney)*2,20);
+    //fill(0,0,0);  // black
+    textFont(font,24);
+    text(Math.round(state.pctForRomney)+"%",WINDOW_SIZE/4 + 120,3*WINDOW_SIZE/4);
     // update which state we're showing
     currentStateIndex = (currentStateIndex+1) % statePostalCodes.length;
     // update the last time we drew a state
